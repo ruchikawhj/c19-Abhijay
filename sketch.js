@@ -56,21 +56,28 @@ if (coin.isTouching(rocket)) {
   coin.destroyEach();
   score = score + 10;
 }
-else 
-  if (asteroid.isTouching(rocket)) {
+if (asteroid.isTouching(rocket)) {
     gameState = END;
-
+}
+drawSprites();
+  }
+  if(gameState===END){
     coin.destroyEach();
     asteroid.destroyEach();
-
+    bckgrd.velocityY=0;
     coin.setVelocityYEach(0);
     asteroid.setVelocityYEach(0);
-  }
+    textSize(50);
+    fill("black")
+    text("GAME OVER ", width/2 - 150, height/2);
+  
 }
-  drawSprites();
+
   textSize(25);
   fill(205);
   text("Score: " + score, width - 150, 30);
+
+
 }
 
 function createAsteroids() {
